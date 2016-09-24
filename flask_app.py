@@ -1,3 +1,4 @@
+from event_finder import find_events
 
 from flask import Flask, render_template, redirect, request, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -5,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
-events = ["sample event"]
+events = find_events()
 
 @app.route('/', methods = ['GET', 'POST'])
 def index():
