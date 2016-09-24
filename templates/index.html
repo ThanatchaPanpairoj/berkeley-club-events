@@ -22,6 +22,7 @@
             </div>
         </nav>
         <div class="container">
+            <h3>Events</h3>
             {% for event in events %}
                 <div class="row">
                     {{ event }}
@@ -29,8 +30,8 @@
             {% endfor %}
         <div class = "row">
             <form action="." method="POST">
-                <textarea class = "form-control" name="contents" placeholder="Enter a comment"></textarea>
-                <input type="submit" value="Post comment">
+                <textarea class = "form-control" name="contents" placeholder="Add an event"></textarea>
+                <input type="submit" value="Post event">
             </form>
         </div>
     </div><!-- /.container -->
