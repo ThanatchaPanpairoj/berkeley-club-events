@@ -16,4 +16,5 @@ def find_events():
             start = dateutil.parser.parse(event['start_time'])
             end = dateutil.parser.parse(event['end_time'])
             output += [start.strftime("%I:%M%p") + " - " + end.strftime("%I:%M%p")]
+        output+= ["\n"]
     return output
