@@ -3,7 +3,7 @@ from datetime import datetime
 import dateutil.parser
 
 def find_events():
-    graph = facebook.GraphAPI(access_token='EAACEdEose0cBAECWoZBeZAc0eVZBTVvAyX4xZAhy6ZCzVvJQqDs3WsTVzCuQ4mIdWwxfPhFArVU245YsJWsLxSwrFHUdpoh0NOpL47948X2e2p0ZCUr2aZBTurNQnAyR1q2tiwMvOu4zfJWyEfwZCw496H2KCHg30A0TTnYqAqr2eAZDZD', version='2.7')
+    graph = facebook.GraphAPI(access_token='EAACEdEose0cBANKIjzrBn5fI2zZC3MMITLLWZCfLsl2LRiLsaW7rZCPJo6wqevY5vB3cwruIQx1ZAJT0rb6LBcQQt80BGJkVnwJc0nX6ssjuTtDijX8bv0tILVFclMR155TSx9ZBn7TM4bp9r0j6fcZCPV20NRlraS25Qs7glf9AZDZD', version='2.7')
 
     events = graph.request('search', args={'q': 'berkeley club', 'type': 'event'}, method='GET')
     output = []
