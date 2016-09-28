@@ -1,1 +1,1 @@
-# berkeley-club-events
+# berkeley-info-session-finder
