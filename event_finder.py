@@ -7,18 +7,27 @@ def find_events():
     Queries the API for relevant events and then the name, event, and start and end times are 
     added to the list if they exist.
     """
-    graph = facebook.GraphAPI(access_token='EAACEdEose0cBANKIjzrBn5fI2zZC3MMITLLWZCfLsl2LRiLsaW7rZCPJo6wqevY5vB3cwruIQx1ZAJT0rb6LBcQQt80BGJkVnwJc0nX6ssjuTtDijX8bv0tILVFclMR155TSx9ZBn7TM4bp9r0j6fcZCPV20NRlraS25Qs7glf9AZDZD', version='2.7')
-
-    events = graph.request('search', args={'q': 'berkeley club', 'type': 'event'}, method='GET')
+    graph = facebook.GraphAPI(access_token='EAAbfOTcPIK8BAPdwJK80Bi700scXZAnxN9jjx1ggywDoJviyXKqsjAPUkptoDNppcHUIGJqfjmJaPDwAw4qAPFEZCrKxJjQZAcvvm4gHBlcBFqDEFVtxBZB4JtEisbRfZAdVFbXxGMI68ZAv9GDUZBjFiwDwFQnZCh4ZD', version='2.7')
+    #graph = facebook.GraphAPI(access_token='1934286690132143|wuzZwiZqs7IwFYEhs5qDS6GgTF4', version='2.7')
     output = []
-    for event in events['data']:
-        if 'name' in event:
-            output += [event['name']]
-        if 'location' in event:
-            output += [event['location']]
-        if 'start_time' in event and 'end_time' in event:
-            start = dateutil.parser.parse(event['start_time'])
-            end = dateutil.parser.parse(event['end_time'])
-            output += [start.strftime("%b %d %I:%M%p") + " - " + end.strftime("%I:%M%p")]
-        output += ["-"]
+    def get_events(search):
+        nonlocal output
+        events = graph.request('search', args={'q': search, 'type': 'event'}, method='GET')
+        for event in events['data']:
+            if 'name' in event:
+                output += [event['name']]
+            if 'place' in event and 'name' in event['place']:
+                output += [event['place']['name']]
+            if 'description' in event:
+                output += [event['description']]
+            if 'start_time' in event and 'end_time' in event:
+                start = dateutil.parser.parse(event['start_time'])
+                end = dateutil.parser.parse(event['end_time'])
+                output += [start.strftime("%b %d %I:%M%p") + " - " + end.strftime("%I:%M%p")]
+            output += ["-"]
+    get_events("Apple Infosession")
+    get_events("EY Infosession")
+    get_events("Verizon Infosession")
+    get_events("Adobe Infosession")
+    get_events("Google Infosession")
     return output
